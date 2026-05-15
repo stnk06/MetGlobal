@@ -1,0 +1,182 @@
+﻿<Window x:Class="MetGlobal.Views.HelpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Руководство пользователя" Height="800" Width="900"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <FlowDocumentScrollViewer>
+            <FlowDocument FontFamily="Segoe UI" PagePadding="40">
+
+                <!-- Титул -->
+                <Paragraph FontSize="28" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,20">
+                    РУКОВОДСТВО ПОЛЬЗОВАТЕЛЯ
+                </Paragraph>
+
+                <Paragraph FontSize="14" FontStyle="Italic" TextAlignment="Center" Margin="0,0,0,40" Foreground="Gray">
+                    Автоматизированная система управления "MetGlobal"
+                </Paragraph>
+
+                <!-- 1. ВВЕДЕНИЕ -->
+                <Paragraph FontSize="20" FontWeight="Bold" Margin="0,20,0,10" Background="#EEEEEE" Padding="5">
+                    1. ВВЕДЕНИЕ
+                </Paragraph>
+
+                <Paragraph FontWeight="Bold" FontSize="16" Margin="0,10,0,5">1.1. Область применения</Paragraph>
+                <Paragraph TextAlignment="Justify">
+                    Автоматизированная система "MetGlobal" предназначена для информационной поддержки деятельности сотрудников предприятия, ведения учета продукции, клиентов, поставщиков и формирования аналитической отчетности.
+                </Paragraph>
+
+                <Paragraph FontWeight="Bold" FontSize="16" Margin="0,10,0,5">1.2. Краткое описание возможностей</Paragraph>
+                <List MarkerStyle="Disc">
+                    <ListItem>
+                        <Paragraph>Учет справочной информации (товары, категории, поставщики);</Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>Ведение базы клиентов;</Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>Оформление и сопровождение заказов;</Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>Автоматическое формирование стоимости заказов;</Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>Поиск и фильтрация информации;</Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>Формирование аналитических отчетов (продажи, динамика) с экспортом в PDF и Excel.</Paragraph>
+                    </ListItem>
+                </List>
+
+                <Paragraph FontWeight="Bold" FontSize="16" Margin="0,10,0,5">1.3. Уровень подготовки пользователя</Paragraph>
+                <Paragraph TextAlignment="Justify">
+                    Пользователям не нужно проходить специальную подготовку. Достаточно обладать базовыми навыками работы на персональном компьютере с операционной системой Windows.
+                </Paragraph>
+
+                <!-- 2. НАЗНАЧЕНИЕ И УСЛОВИЯ -->
+                <Paragraph FontSize="20" FontWeight="Bold" Margin="0,20,0,10" Background="#EEEEEE" Padding="5">
+                    2. НАЗНАЧЕНИЕ И УСЛОВИЯ ПРИМЕНЕНИЯ
+                </Paragraph>
+
+                <Paragraph FontWeight="Bold" FontSize="16" Margin="0,10,0,5">2.1. Назначение</Paragraph>
+                <Paragraph TextAlignment="Justify">
+                    Система позволяет автоматизировать следующие виды деятельности:
+                </Paragraph>
+                <List MarkerStyle="Circle">
+                    <ListItem>
+                        <Paragraph>Ввод и хранение данных о продукции;</Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>Регистрация новых клиентов и поставщиков;</Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>Создание заказов и контроль их статусов;</Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>Генерация печатных форм отчетов.</Paragraph>
+                    </ListItem>
+                </List>
+
+                <Paragraph FontWeight="Bold" FontSize="16" Margin="0,10,0,5">2.2. Условия применения</Paragraph>
+                <Paragraph>Минимальные технические характеристики:</Paragraph>
+                <List MarkerStyle="Box">
+                    <ListItem>
+                        <Paragraph>ОЗУ: 4 ГБ и выше;</Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>Процессор: x64 разрядный;</Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>ОС: Windows 10/11 с пакетом .NET Framework 4.7.2+;</Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>Экран: Разрешение не менее 1280x720.</Paragraph>
+                    </ListItem>
+                </List>
+
+                <!-- 3. ОПИСАНИЕ ОПЕРАЦИЙ -->
+                <Paragraph FontSize="20" FontWeight="Bold" Margin="0,20,0,10" Background="#EEEEEE" Padding="5">
+                    3. ОПИСАНИЕ ОПЕРАЦИЙ
+                </Paragraph>
+
+                <Paragraph TextAlignment="Justify">
+                    Интерфейс приложения разделен на функциональные блоки, доступные через боковое меню навигации.
+                </Paragraph>
+
+                <Paragraph FontWeight="Bold" FontSize="16" Margin="0,10,0,5">3.1. Работа с заказами</Paragraph>
+                <Paragraph TextAlignment="Justify">
+                    Раздел "Заказы" позволяет просматривать историю операций. Для создания нового заказа нажмите кнопку "Новый заказ", выберите клиента и добавьте товары из списка. Сумма рассчитывается автоматически.
+                </Paragraph>
+
+                <Paragraph FontWeight="Bold" FontSize="16" Margin="0,10,0,5">3.2. Справочники (Продукция, Категории, Поставщики)</Paragraph>
+                <Paragraph TextAlignment="Justify">
+                    Эти разделы служат для управления нормативно-справочной информацией. При добавлении продукции необходимо указывать артикул (выбирая префикс материала), единицу измерения и ГОСТ.
+                </Paragraph>
+
+                <Paragraph FontWeight="Bold" FontSize="16" Margin="0,10,0,5">3.3. Отчеты</Paragraph>
+                <Paragraph TextAlignment="Justify">
+                    Модуль отчетов предоставляет визуализацию данных (диаграммы) и табличные данные. Доступен экспорт:
+                </Paragraph>
+                <List>
+                    <ListItem>
+                        <Paragraph>
+                            <Bold>PDF:</Bold> Формирует документ с группировкой данных и итогами.
+                        </Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>
+                            <Bold>Excel:</Bold> Выгружает плоскую таблицу для дальнейшей обработки.
+                        </Paragraph>
+                    </ListItem>
+                </List>
+
+                <!-- 4. АВАРИЙНЫЕ СИТУАЦИИ -->
+                <Paragraph FontSize="20" FontWeight="Bold" Margin="0,20,0,10" Background="#EEEEEE" Padding="5">
+                    4. АВАРИЙНЫЕ СИТУАЦИИ
+                </Paragraph>
+
+                <Table CellSpacing="0" BorderBrush="Black" BorderThickness="1">
+                    <Table.Columns>
+                        <TableColumn Width="200"/>
+                        <TableColumn/>
+                    </Table.Columns>
+                    <TableRowGroup>
+                        <TableRow Background="#CCCCCC">
+                            <TableCell BorderBrush="Black" BorderThickness="1" Padding="5">
+                                <Paragraph FontWeight="Bold">Текст ошибки</Paragraph>
+                            </TableCell>
+                            <TableCell BorderBrush="Black" BorderThickness="1" Padding="5">
+                                <Paragraph FontWeight="Bold">Рекомендации по устранению</Paragraph>
+                            </TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell BorderBrush="Black" BorderThickness="1" Padding="5">
+                                <Paragraph>Ошибка подключения к БД</Paragraph>
+                            </TableCell>
+                            <TableCell BorderBrush="Black" BorderThickness="1" Padding="5">
+                                <Paragraph>Проверьте настройки строки подключения в App.config и доступность сервера MS SQL.</Paragraph>
+                            </TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell BorderBrush="Black" BorderThickness="1" Padding="5">
+                                <Paragraph>Неверный формат данных</Paragraph>
+                            </TableCell>
+                            <TableCell BorderBrush="Black" BorderThickness="1" Padding="5">
+                                <Paragraph>Проверьте вводимые данные на соответствие маскам (телефон, ИНН, email).</Paragraph>
+                            </TableCell>
+                        </TableRow>
+                    </TableRowGroup>
+                </Table>
+
+                <Paragraph Margin="0,20,0,0" TextAlignment="Center" FontSize="12" Foreground="Gray">
+                    © 2025 MetGlobal.
+                </Paragraph>
+
+            </FlowDocument>
+        </FlowDocumentScrollViewer>
+    </Grid>
+</Window>

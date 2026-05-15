@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="MetGlobal.Views.ProductsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:behaviors="clr-namespace:MetGlobal.Behaviors"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1000">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Каталог продукции" Style="{DynamicResource MahApps.Styles.TextBlock.Title}" Margin="0,0,0,15"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBox mah:TextBoxHelper.Watermark="Фильтр по названию..."
+                     Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" 
+                     Width="300" Margin="0,0,20,0" Style="{DynamicResource MahApps.Styles.TextBox}"/>
+            <ComboBox mah:TextBoxHelper.Watermark="Фильтр по категории"
+                      ItemsSource="{Binding FilterCategories}" 
+                      SelectedItem="{Binding SelectedFilterCategory}"
+                      DisplayMemberPath="CategoryName"
+                      Width="250" Style="{DynamicResource MahApps.Styles.ComboBox}"/>
+        </StackPanel>
+
+        <DataGrid Grid.Row="2" ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}"
+                  Style="{DynamicResource MahApps.Styles.DataGrid.Azure}" CanUserAddRows="False" IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Артикул" Binding="{Binding ProductCode}" Width="Auto"/>
+                <DataGridTemplateColumn Header="Наименование" Width="2*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ProductName}" Padding="4,2"
+                                       behaviors:TextBlockHighlightBehavior.SearchText="{Binding DataContext.SearchText, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Категория" Binding="{Binding CategoryName}" Width="*"/>
+                <DataGridTextColumn Header="Поставщик" Binding="{Binding SupplierName}" Width="1.5*"/>
+                <DataGridTextColumn Header="Ед. изм." Binding="{Binding Unit}" Width="Auto"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Price, StringFormat=C, ConverterCulture=ru-RU}" Width="Auto"/>
+                <DataGridTextColumn Header="ГОСТ" Binding="{Binding GOST}" Width="Auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Row="3" Margin="0,15,0,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Button Content="Добавить" Command="{Binding AddCommand}"  Margin="0,0,5,0"/>
+                <Button Content="Изменить" Command="{Binding EditCommand}" Margin="0,0,5,0"/>
+                <Button Content="Удалить" Command="{Binding DeleteCommand}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="Экспорт в PDF" Command="{Binding ExportToPdfCommand}" Margin="0,0,5,0"/>
+                <Button Content="Экспорт в Excel" Command="{Binding ExportToExcelCommand}"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

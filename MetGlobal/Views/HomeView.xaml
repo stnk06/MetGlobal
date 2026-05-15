@@ -1,0 +1,155 @@
+﻿<UserControl x:Class="MetGlobal.Views.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="1000">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/SharedResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="LabelText" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="#666666"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+                <Setter Property="Margin" Value="0,0,0,5"/>
+            </Style>
+
+            <Style x:Key="ValueText" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="#333333"/>
+                <Setter Property="FontSize" Value="24"/>
+                <Setter Property="FontWeight" Value="Light"/>
+                <Setter Property="Margin" Value="0,0,0,20"/>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- 1. ВЕРХНЯЯ СЕКЦИЯ -->
+        <StackPanel Grid.Row="0" Margin="40,40,40,20">
+            <TextBlock Text="ООО МетГлобал" 
+                       FontSize="48" 
+                       FontWeight="Thin" 
+                       Foreground="{StaticResource BrushRed}"/>
+            <TextBlock Text="Система управления производством и продажами" 
+                       FontSize="18" 
+                       Foreground="#888888" 
+                       Margin="2,0,0,0"/>
+            <Separator Background="#EEEEEE" Margin="0,30,0,0"/>
+        </StackPanel>
+
+        <!-- 2. ЦЕНТРАЛЬНАЯ СЕКЦИЯ -->
+        <Grid Grid.Row="1" Margin="40,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Левая часть -->
+            <StackPanel Grid.Column="0" VerticalAlignment="Top">
+                <TextBlock Text="ИНФОРМАЦИЯ О ЛИЦЕНЗИИ" 
+                           Foreground="{StaticResource BrushRed}" 
+                           FontSize="14" FontWeight="Bold" Margin="0,0,0,20"/>
+
+                <TextBlock Text="Разработчик ПО" Style="{StaticResource LabelText}"/>
+                <TextBlock Text="{Binding DeveloperName}" Style="{StaticResource ValueText}"/>
+
+                <TextBlock Text="ИНН Организации" Style="{StaticResource LabelText}"/>
+                <TextBlock Text="{Binding INN}" Style="{StaticResource ValueText}"/>
+
+                <TextBlock Text="Версия сборки" Style="{StaticResource LabelText}"/>
+                <TextBlock Text="{Binding AppVersion}" Style="{StaticResource ValueText}"/>
+            </StackPanel>
+
+            <Rectangle Grid.Column="1" Width="1" Fill="#EEEEEE" Margin="30,0"/>
+
+            <!-- Правая часть -->
+            <StackPanel Grid.Column="2" VerticalAlignment="Top">
+                <TextBlock Text="ТЕКУЩИЙ СТАТУС СИСТЕМЫ" 
+                           Foreground="{StaticResource BrushRed}" 
+                           FontSize="14" FontWeight="Bold" Margin="0,0,0,20"/>
+
+                <Grid Margin="0,0,0,30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="&#xE930;" FontFamily="Segoe MDL2 Assets" 
+                               FontSize="32" Foreground="#4CAF50" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                    <StackPanel Grid.Column="1">
+                        <TextBlock Text="База данных подключена" FontSize="18" Foreground="#333333"/>
+                        <TextBlock Text="Соединение стабильно, синхронизация активна" FontSize="14" Foreground="#666666"/>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </Grid>
+
+        <!-- 3. НИЖНЯЯ СЕКЦИЯ -->
+        <Grid Grid.Row="2" Background="#F9F9F9">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20">
+                <TextBlock Text="Действия:" VerticalAlignment="Center" Foreground="#666666" Margin="0,0,15,0"/>
+
+                <!-- Кнопка Справки -->
+                <Button Command="{Binding OpenHelpCommand}"
+                        Content="РУКОВОДСТВО ПОЛЬЗОВАТЕЛЯ"
+                        Foreground="White"
+                        Background="{StaticResource BrushMediumGray}"
+                        BorderThickness="0"
+                        Padding="20,10"
+                        FontWeight="SemiBold"
+                        FontSize="14"
+                        Cursor="Hand"
+                        Margin="0,0,10,0" Height="35" Width="219">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" CornerRadius="4">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#555555"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <!-- Кнопка Выхода -->
+                <Button Command="{Binding ExitCommand}"
+                        Content="ЗАВЕРШИТЬ РАБОТУ"
+                        Foreground="White"
+                        Background="#B00020"
+                        BorderThickness="0"
+                        Padding="25,10"
+                        FontWeight="Bold"
+                        FontSize="14"
+                        Cursor="Hand" Width="152">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" CornerRadius="4">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#D32F2F"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>
